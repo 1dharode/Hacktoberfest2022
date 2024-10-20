@@ -1,0 +1,36 @@
+function binarySearch(arr, target) {
+    let low = 0;
+    let high = arr.length - 1;
+    
+    while (low <= high) {
+        // Calculate the middle index
+        let mid = Math.floor((low + high) / 2);
+        
+        // Check if the target is at the middle
+        if (arr[mid] === target) {
+            return mid;  // Target found, return the index
+        }
+        
+        // If target is smaller, ignore the right half
+        if (arr[mid] > target) {
+            high = mid - 1;
+        } else {
+            // If target is larger, ignore the left half
+            low = mid + 1;
+        }
+    }
+    
+    // Target is not present in the array
+    return -1;
+}
+
+// Example usage:
+const sortedArray = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+const target = 7;
+const result = binarySearch(sortedArray, target);
+
+if (result !== -1) {
+    console.log(`Element found at index ${result}`);
+} else {
+    console.log("Element not found in the array");
+}
